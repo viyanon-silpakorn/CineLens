@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { COMPOSITION_PRINCIPLES } from '../data/cinemaData';
+import { CINEMA_ASSETS, PUBLIC_FALLBACK_IMAGES } from '../assets/images';
+import { CinematicImage } from './CinematicImage';
 import { 
   Grid, 
   Move, 
@@ -111,11 +113,11 @@ export const CompositionModule: React.FC<CompositionModuleProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           {/* Visual Canvas (7 cols) */}
           <div className="lg:col-span-7 relative aspect-[16/9] rounded-xl overflow-hidden bg-black border border-zinc-700 shadow-inner group select-none">
-            <img
-              src="/src/assets/images/cinematic_composition_rule_thirds_1792596378308.jpg"
+            <CinematicImage
+              src={CINEMA_ASSETS.ruleThirds}
+              fallbackSrc={PUBLIC_FALLBACK_IMAGES.ruleThirds}
               alt="Rule of thirds demonstration"
               className="w-full h-full object-cover"
-              referrerPolicy="no-referrer"
             />
             {/* Viewfinder Scrim */}
             <div className="absolute inset-0 bg-black/20 pointer-events-none" />

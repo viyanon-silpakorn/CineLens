@@ -5,6 +5,8 @@ import {
   CameraAngle, 
   CameraMovementItem 
 } from '../data/cinemaData';
+import { CINEMA_ASSETS, PUBLIC_FALLBACK_IMAGES } from '../assets/images';
+import { CinematicImage } from './CinematicImage';
 import { 
   Compass, 
   Play, 
@@ -323,11 +325,12 @@ export const AnglesAndMovement: React.FC<AnglesAndMovementProps> = ({
                 transform: angleTransform.transform
               }}
             >
-              <img
+              <CinematicImage
                 src={selectedAngle.previewImage}
+                fallbackSrc={selectedAngle.fallbackImage}
                 alt={selectedAngle.nameTh}
+                shotCode={selectedAngle.code}
                 className="w-full h-full object-cover filter contrast-110"
-                referrerPolicy="no-referrer"
               />
               {/* Studio Reticle Overlay */}
               <div className="absolute inset-0 border-2 border-rose-400/40 rounded-lg pointer-events-none" />
@@ -488,15 +491,20 @@ export const AnglesAndMovement: React.FC<AnglesAndMovementProps> = ({
                   transform: telemetry.bgTransform
                 }}
               >
-                <img
+                <CinematicImage
                   src={
                     selectedMovement.animationType === 'drone'
-                      ? '/src/assets/images/cinematic_drone_aerial_1792597055982.jpg'
-                      : '/src/assets/images/cinematic_composition_rule_thirds_1792596378308.jpg'
+                      ? CINEMA_ASSETS.droneAerial
+                      : CINEMA_ASSETS.ruleThirds
+                  }
+                  fallbackSrc={
+                    selectedMovement.animationType === 'drone'
+                      ? PUBLIC_FALLBACK_IMAGES.droneAerial
+                      : PUBLIC_FALLBACK_IMAGES.ruleThirds
                   }
                   alt="Background plane"
+                  aspectRatioClass="h-full w-full"
                   className="w-full h-full object-cover filter brightness-75 contrast-105"
-                  referrerPolicy="no-referrer"
                 />
               </div>
 

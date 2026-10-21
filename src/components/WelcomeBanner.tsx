@@ -1,5 +1,7 @@
 import React from 'react';
 import { ActiveTab } from './Sidebar';
+import { CINEMA_ASSETS, PUBLIC_FALLBACK_IMAGES } from '../assets/images';
+import { CinematicImage } from './CinematicImage';
 import { 
   Play, 
   Sparkles, 
@@ -101,11 +103,12 @@ export const WelcomeBanner: React.FC<WelcomeBannerProps> = ({
           <div className="lg:col-span-5 relative group select-none">
             <div className="relative aspect-[16/9] lg:aspect-[4/3] rounded-2xl overflow-hidden bg-black border border-zinc-700/80 shadow-2xl ring-1 ring-rose-500/20">
               {/* Cinema Camera Cover Photo */}
-              <img 
-                src="/src/assets/images/cover_cinema_camera_1792598273865.jpg" 
+              <CinematicImage 
+                src={CINEMA_ASSETS.coverCamera} 
+                fallbackSrc={PUBLIC_FALLBACK_IMAGES.coverCamera}
                 alt="ARRI Cinema Camera Studio Rig" 
+                aspectRatioClass="aspect-[16/9] lg:aspect-[4/3]"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter contrast-110"
-                referrerPolicy="no-referrer"
               />
 
               {/* Viewfinder Scrim & Overlays */}

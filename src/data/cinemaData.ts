@@ -1,3 +1,5 @@
+import { CINEMA_ASSETS, PUBLIC_FALLBACK_IMAGES } from '../assets/images';
+
 export interface ShotSizeItem {
   id: string;
   code: string;
@@ -12,6 +14,7 @@ export interface ShotSizeItem {
   jointWarning: string;
   category: 'wide' | 'medium' | 'close';
   image: string;
+  fallbackImage?: string;
   scaleHeightPercent: number; // Viewfinder crop height percentage (100 = full scene ELS, down to 10 = ECU)
   scaleCenterY: number; // Viewfinder center Y percentage (0 = top, 100 = bottom)
   colorCode: string;
@@ -31,7 +34,8 @@ export const SHOT_SIZES: ShotSizeItem[] = [
     humanCutPoint: 'มองเห็นร่างกายมนุษย์ครบทั้งตัวในสเกลที่เล็กมาก เท้าแตะพื้นโดยมีพื้นที่ภูมิประเทศแวดล้อมกว้างขวางรอบตัว',
     jointWarning: 'เนื่องจากสเกลตัวคนเล็กมาก ไม่ควรมีสิ่งกีดขวางระดับสายตาที่บังลำตัวคนจนกลายเป็นจุดรบกวน',
     category: 'wide',
-    image: '/src/assets/images/cinematic_shot_els_1792596378390.jpg',
+    image: CINEMA_ASSETS.shotEls,
+    fallbackImage: PUBLIC_FALLBACK_IMAGES.shotEls,
     scaleHeightPercent: 100,
     scaleCenterY: 55,
     colorCode: '#0284c7'
@@ -49,7 +53,8 @@ export const SHOT_SIZES: ShotSizeItem[] = [
     humanCutPoint: 'ตัดขอบล่างที่ใต้ฝ่าเท้า และมี Headroom พอเหมาะเหนือศีรษะ ไม่ตัดเฉือนอวัยวะใดๆ',
     jointWarning: 'ห้ามตัดขอบเฟรมตรงข้อเท้า (Ankles) หรือปลายนิ้วเท้า เพราะจะทำให้ตัวละครดูเหมือนลอยเคว้งหรือไม่สมส่วน',
     category: 'wide',
-    image: '/src/assets/images/cinematic_composition_rule_thirds_1792596378308.jpg',
+    image: CINEMA_ASSETS.shotLs,
+    fallbackImage: PUBLIC_FALLBACK_IMAGES.shotLs,
     scaleHeightPercent: 78,
     scaleCenterY: 50,
     colorCode: '#0ea5e9'
@@ -67,7 +72,8 @@ export const SHOT_SIZES: ShotSizeItem[] = [
     humanCutPoint: 'ตัดขอบล่างที่บริเวณระดับเอว (เหนือสะโพกเล็กน้อย) ไม่ตัดตรงหัวเหน่าหรือข้อสะโพก',
     jointWarning: 'ห้ามตัดผ่านข้อมือหรือข้อศอก หากตัวละครปล่อยแขนลง ให้ตัดเหนือหรือใต้จุดข้อศอกเล็กน้อย',
     category: 'medium',
-    image: '/src/assets/images/hero_cinestudio_directing_1792596377688.jpg',
+    image: CINEMA_ASSETS.shotMs,
+    fallbackImage: PUBLIC_FALLBACK_IMAGES.shotMs,
     scaleHeightPercent: 52,
     scaleCenterY: 38,
     colorCode: '#f59e0b'
@@ -85,7 +91,8 @@ export const SHOT_SIZES: ShotSizeItem[] = [
     humanCutPoint: 'ตัดขอบล่างที่ระดับราวนมหรือรักแร้ (Mid-Chest / Upper Torso)',
     jointWarning: 'ระวังอย่าตัดขอบล่างตรงกระดูกไหปลาร้าหรือลำคอ เพราะจะทำให้ศีรษะดูเหมือนขาดลอย',
     category: 'medium',
-    image: '/src/assets/images/cinematic_shot_cu_1792596378215.jpg',
+    image: CINEMA_ASSETS.shotMcu,
+    fallbackImage: PUBLIC_FALLBACK_IMAGES.shotMcu,
     scaleHeightPercent: 36,
     scaleCenterY: 28,
     colorCode: '#f97316'
@@ -103,7 +110,8 @@ export const SHOT_SIZES: ShotSizeItem[] = [
     humanCutPoint: 'ตัดขอบล่างใต้คางเล็กน้อย (ระดับลูกกระเดือกหรือคอเสื้อ) และตัดขอบบนเหนือศีรษะหรือเล็มขอบผมเล็กน้อย',
     jointWarning: 'ห้ามตัดขอบภาพที่รอยต่อลำคอพอดี (Neckline Cut) จนแลดูผิดธรรมชาติ',
     category: 'close',
-    image: '/src/assets/images/cinematic_shot_cu_1792596378215.jpg',
+    image: CINEMA_ASSETS.shotCu,
+    fallbackImage: PUBLIC_FALLBACK_IMAGES.shotCu,
     scaleHeightPercent: 24,
     scaleCenterY: 20,
     colorCode: '#ef4444'
@@ -121,7 +129,8 @@ export const SHOT_SIZES: ShotSizeItem[] = [
     humanCutPoint: 'เจาะเฉพาะดวงตาสองข้าง คิ้ว หรือริมฝีปาก กรอบภาพตัดผ่านหน้าผากและแก้มโดยตรง',
     jointWarning: 'การจัดแสงและการโฟกัสต้องแม่นยำระดับมิลลิเมตร หากหลุดโฟกัสเพียงเล็กน้อยภาพจะไม่สามารถใช้งานได้',
     category: 'close',
-    image: '/src/assets/images/cinematic_shot_cu_1792596378215.jpg',
+    image: CINEMA_ASSETS.shotEcu,
+    fallbackImage: PUBLIC_FALLBACK_IMAGES.shotEcu,
     scaleHeightPercent: 12,
     scaleCenterY: 18,
     colorCode: '#ec4899'
@@ -181,6 +190,7 @@ export interface CameraAngle {
   cinematicPurpose: string;
   cinemaExample: string;
   previewImage: string;
+  fallbackImage?: string;
 }
 
 export const CAMERA_ANGLES: CameraAngle[] = [
@@ -192,7 +202,8 @@ export const CAMERA_ANGLES: CameraAngle[] = [
     psychologicalEffect: 'สร้างความรู้สึกสมจริง เป็นกลาง เสมอภาค และเป็นธรรมชาติ ดึงให้ผู้ชมรู้สึกเหมือนยืนอยู่ต่อหน้าตัวละครอย่างเท่าเทียม',
     cinematicPurpose: 'ใช้ในฉากสนทนาทั่วไป การสร้างความผูกพัน และการนำเสนอเรื่องราวที่เป็นรูปธรรมและเข้าถึงง่าย',
     cinemaExample: 'ฉากพูดคุยในโต๊ะอาหาร ละครแนวดราม่าชีวิต และสารคดีเชิงลึก',
-    previewImage: '/src/assets/images/cinematic_shot_cu_1792596378215.jpg'
+    previewImage: CINEMA_ASSETS.shotMcu,
+    fallbackImage: PUBLIC_FALLBACK_IMAGES.shotMcu
   },
   {
     id: 'low-angle',
@@ -202,7 +213,8 @@ export const CAMERA_ANGLES: CameraAngle[] = [
     psychologicalEffect: 'ทำให้ตัวละครดูมีอำนาจ ทรงพลัง น่าเกรงขาม คุกคาม หรือดูเป็นวีรบุรุษผู้ยิ่งใหญ่ที่ยืนเหนือสถานการณ์',
     cinematicPurpose: 'เสริมสร้างบารมีของผู้นำ การเปิดตัวศัตรูตัวฉกาจ หรือแสดงชัยชนะในจุดพลิกผันของเรื่อง',
     cinemaExample: 'ฉากเปิดตัว Batman ยืนตระหง่านบนยอดตึก หรือผู้บริหารในภาพยนตร์การเมือง',
-    previewImage: '/src/assets/images/hero_cinestudio_directing_1792596377688.jpg'
+    previewImage: CINEMA_ASSETS.lowAngle,
+    fallbackImage: PUBLIC_FALLBACK_IMAGES.lowAngle
   },
   {
     id: 'high-angle',
@@ -212,7 +224,8 @@ export const CAMERA_ANGLES: CameraAngle[] = [
     psychologicalEffect: 'ทำให้ตัวละครดูตัวเล็กลง เปราะบาง ไร้อำนาจ ไร้ทางสู้ สับสน หรือตกเป็นเหยื่อของการถูกคุกคาม',
     cinematicPurpose: 'ลดทอนอำนาจของตัวละคร เน้นย้ำความสูญเสีย ความสิ้นหวัง หรือการติดกับดักในพื้นที่จำกัด',
     cinemaExample: 'ฉากตัวละครนั่งกอดเข่าร้องไห้คนเดียว หรือฉากผู้ต้องหาถูกสอบสวนอย่างหนักหน่วง',
-    previewImage: '/src/assets/images/cinematic_composition_rule_thirds_1792596378308.jpg'
+    previewImage: CINEMA_ASSETS.highAngle,
+    fallbackImage: PUBLIC_FALLBACK_IMAGES.highAngle
   },
   {
     id: 'birds-eye',
@@ -222,7 +235,8 @@ export const CAMERA_ANGLES: CameraAngle[] = [
     psychologicalEffect: 'ให้มุมมองแบบพระเจ้า (God’s View) ผู้ชมมองเห็นภาพรวมทางภูมิศาสตร์ ชะตากรรม และการเคลื่อนที่ราวกับหมากบนกระดาน',
     cinematicPurpose: 'แสดงโครงสร้างเรขาคณิตของฉาก การค้นพบร่องรอย หรือแสดงชะตากรรมที่ไม่อาจหลีกเลี่ยงได้',
     cinemaExample: 'ฉากตรวจสถานที่เกิดเหตุจากเพดาน 90° หรือการเดินในเขาวงกตขนาดยักษ์',
-    previewImage: '/src/assets/images/cinematic_drone_aerial_1792597055982.jpg'
+    previewImage: CINEMA_ASSETS.droneAerial,
+    fallbackImage: PUBLIC_FALLBACK_IMAGES.droneAerial
   },
   {
     id: 'pov',
@@ -232,7 +246,8 @@ export const CAMERA_ANGLES: CameraAngle[] = [
     psychologicalEffect: 'ดึงให้ผู้ชมสวมวิญญาณเป็นตัวละครโดยตรง สัมผัสสิ่งที่ตัวละครเห็นและรู้สึกแบบเรียลไทม์ (High Immersion)',
     cinematicPurpose: 'สร้างความระทึกขวัญ ประสบการณ์เฉียดตาย การส่องผ่านกล้องส่องทางไกล หรืออาการตามัว/เมาสุรา',
     cinemaExample: 'ฉากตัวละครยื่นมือเปิดประตูในความมืด, มุมมองผ่านหน้ากาก Iron Man หรือมุมมองสไนเปอร์',
-    previewImage: '/src/assets/images/cinematic_pov_shot_1792597055563.jpg'
+    previewImage: CINEMA_ASSETS.pov,
+    fallbackImage: PUBLIC_FALLBACK_IMAGES.pov
   },
   {
     id: 'dutch-angle',
@@ -242,7 +257,8 @@ export const CAMERA_ANGLES: CameraAngle[] = [
     psychologicalEffect: 'สร้างความรู้สึกไม่มั่นคง สับสน วิตกกังวล จิตใจปั่นป่วน หรือโลกกำลังสูญเสียสมดุลทางตรรกะ',
     cinematicPurpose: 'สื่อถึงความวิกลจริต อาการมึนเมา การถูกทรยศ หรืออันตรายที่กำลังคืบคลานเข้ามา',
     cinemaExample: 'ฉาก Joker วางแผนการร้ายใน Gotham หรือภาพยนตร์แนวจิตวิทยา สืบสวนสอบสวน',
-    previewImage: '/src/assets/images/cinematic_shot_cu_1792596378215.jpg'
+    previewImage: CINEMA_ASSETS.dutchAngle,
+    fallbackImage: PUBLIC_FALLBACK_IMAGES.dutchAngle
   }
 ];
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SHOT_SIZES, ShotSizeItem } from '../data/cinemaData';
 import { HumanScaleDiagram } from './HumanScaleDiagram';
+import { CinematicImage } from './CinematicImage';
 import { 
   Maximize2, 
   Camera, 
@@ -136,11 +137,12 @@ export const ShotLibrary: React.FC<ShotLibraryProps> = ({
               >
                 {/* Visual Preview Frame */}
                 <div className="relative aspect-[16/9] w-full overflow-hidden bg-black">
-                  <img
+                  <CinematicImage
                     src={shot.image}
+                    fallbackSrc={shot.fallbackImage}
                     alt={shot.nameTh}
+                    shotCode={shot.code}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter contrast-105"
-                    referrerPolicy="no-referrer"
                   />
                   {/* Subtle cinema scrim */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#14141b] via-transparent to-black/40" />
@@ -247,11 +249,12 @@ export const ShotLibrary: React.FC<ShotLibraryProps> = ({
 
             {/* Viewfinder Preview with Cinema Marks */}
             <div className="relative aspect-[16/9] w-full bg-black rounded-xl overflow-hidden border border-zinc-700">
-              <img
+              <CinematicImage
                 src={inspectorShot.image}
+                fallbackSrc={inspectorShot.fallbackImage}
                 alt={inspectorShot.nameTh}
+                shotCode={inspectorShot.code}
                 className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 border-4 border-rose-500/20 pointer-events-none" />
               <div className="absolute bottom-3 left-3 bg-black/70 px-2 py-1 rounded text-xs font-mono text-pink-400">
