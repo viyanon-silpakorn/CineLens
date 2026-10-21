@@ -1,0 +1,6 @@
+{
+  "name": "CineLens Interactive",
+  "description": "ระบบเว็บแอปพลิเคชันเพื่อการเรียนรู้สื่อมัลติมีเดียและศิลปะภาพยนตร์ การจัดขนาดภาพ องค์ประกอบภาพ และมุมกล้อง",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
